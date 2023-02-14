@@ -22,7 +22,20 @@ section {
   width: 5%;
   border-radius: 50%;
   display: block;
-  margin: 50px auto;
+  margin: 100px auto 25px auto;
+}
+h3 {
+  margin: 15px auto;
+  text-align: center;
+}
+.socials {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.socials a {
+  margin: 0 5px;
+  font-size: 40px;
 }
 button {
   display: block;
@@ -42,12 +55,62 @@ button:hover {
   border: 2px solid #eee;
   transition: all 0.25s;
 }
-
 @media (max-width: 1025px) {
+  .profile {
+    width: 15%;
+  }
+  button {
+    width: 50%;
+  }
+}
+@media (max-width: 815px) {
   .profile {
     width: 25%;
   }
   button {
     width: 95%;
   }
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  animation-duration: 2s;
+}
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+  animation-duration: 2s;
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-duration: 4s;
 }
