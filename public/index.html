@@ -1,80 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Link Tree</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="profile.png" sizes="144×144" type="image/png" />
-    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    >
+    <title>Talal El Zeini | Links Tree</title>
   </head>
-
   <body>
-    <section>
-      <div class="container">
-        <div class='profile-section fadeIn'>
-          <img class="profile" src="profile.png" alt="" />
-          <h3>Talal El Zeini</h3>
-          <div class="socials">
-            <a  href="https://instagram.com/talalzeini"
-              ><i class="fa-brands fa-instagram-square"></i
-            ></a>
-            <a href="https://github.com/talalzeini"
-              ><i class="fa-brands fa-github-square"></i
-            ></a>
-            <a href="https://linkedin.com/in/talalzeini"
-              ><i class="fa-brands fa-linkedin"></i></i
-            ></a>
-          </div>
-        </div>
-        <div id="links"></div>
-      </div>
-    </section>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
   </body>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyA-JfZe5Go-CKwkp8SAIhB1IN9FkRCh928",
-      authDomain: "telzeini.firebaseapp.com",
-      databaseURL: "https://telzeini-default-rtdb.firebaseio.com",
-      projectId: "telzeini",
-      storageBucket: "telzeini.appspot.com",
-      messagingSenderId: "551974062292",
-      appId: "1:551974062292:web:568791910129bc15b7d341",
-    };
-    firebase.initializeApp(firebaseConfig);
-
-    db = firebase.database();
-    var path = db.ref("Links");
-    path.on("value", (snapshot) => {
-      const data = snapshot.val();
-      const keys = Object.keys(data);
-      var length = keys.length;
-      for (let i = 0; i < length; i++) {
-        var fadeDirection = "fadeInRight";
-        if(i % 2 == 0){
-          fadeDirection = "fadeInLeft";
-        }
-        var BtnString =
-          "<button class='" + fadeDirection + "' id = '" +
-          keys[i] +
-          "' onclick='goToLink(this.id)' >" +
-          keys[i].substring(8) +
-          " </>";
-        document.getElementById("links").innerHTML += BtnString;
-
-      }
-    });
-    function goToLink(btnId) {
-      var path = db.ref("Links/" + btnId);
-      path.on("value", (snapshot) => {
-        const link = snapshot.val()["link"];
-        window.location = link;
-      });
-    }
-  </script>
 </html>
